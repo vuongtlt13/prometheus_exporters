@@ -1,0 +1,4 @@
+config/*
+.idea
+.vscode
+docker-compose.yml
