@@ -20,7 +20,7 @@ fi
 
 COMPONENTS=$3
 if [[ -z "$COMPONENTS" ]]; then
-    COMPONENTS="node_exporter,cadvisor"
+    COMPONENTS="node_exporter,cadvisor,mysqld_exporter"
 fi
 
 # 1. generate password 
