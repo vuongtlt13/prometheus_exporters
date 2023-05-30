@@ -6,7 +6,6 @@
      - "--collect.info_schema.processlist"
      - "--collect.binlog_size"
      - "--collect.info_schema.tables"
-     - "--collect.info_schema.tables.databases"
      - "--collect.info_schema.tablestats"
      - "--collect.info_schema.schemastats"
      - "--collect.perf_schema.eventsstatements"
