@@ -1,0 +1,19 @@
+  mysqld_exporter:
+    image: quay.io/prometheus/mysqld-exporter
+    command:
+     - "--collect.global_status"
+     - "--collect.info_schema.innodb_metrics"
+     - "--collect.info_schema.processlist"
+     - "--collect.binlog_size"
+     - "--collect.info_schema.tables"
+     - "--collect.info_schema.tablestats"
+     - "--collect.info_schema.schemastats"
+     - "--collect.perf_schema.eventsstatements"
+     - "--collect.perf_schema.memory_events"
+     - "--collect.info_schema.query_response_time"
+    container_name: mysqld_exporter
+    network_mode: host
+    environment:
+      - DATA_SOURCE_NAME=exporter:exporter@(localhost:3306)
+    ports:
+      - 9104:9104
