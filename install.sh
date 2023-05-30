@@ -58,4 +58,4 @@ do
 done
 
 # run docker-compose
-docker compose up
+docker compose up -d
