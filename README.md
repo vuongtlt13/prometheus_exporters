@@ -1,19 +1,32 @@
-# prometheus_exporters_installer
+# Prometheus exporters
 
-Install exporters for prometheus
+### ALL EXPORTERS CAN SET BASIC AUTH BY CONFIGURING ENVIRONMENT VARIABLES
 
-Example:
-``rm -rf prometheus_exporters && git clone  https://github.com/vuongtlt13/prometheus_exporters_installer prometheus_exporters && cd prometheus_exporters && sudo ./install.sh admin 1234 && cd ..``
 
-Explain:
+#### List of exporters
+- Node Exporter
+- [cAdvisor](https://hub.docker.com/r/vuongtlt13/cadvisor)
 
-1. rm -rf prometheus_exporters: This command removes the directory named prometheus_exporters and its contents recursively (-r), and does not prompt for confirmation (-f) if any files or directories exist within it. This step ensures a clean state before cloning the repository.
 
-2. git clone https://github.com/vuongtlt13/prometheus_exporters_installer prometheus_exporters: This command uses git to clone the repository from the specified URL (https://github.com/vuongtlt13/prometheus_exporters_installer) into a new directory named prometheus_exporters. This step downloads the source code from the repository.
+### 1. Node Exporter
 
-3. cd prometheus_exporters: This command changes the current directory to prometheus_exporters.
+### 2. cAdvisor
 
-4. sudo ./install.sh admin 1234: This command executes the script named install.sh with elevated privileges (sudo). It passes two arguments to the script: "admin" and "1234". The specific purpose for username and password for basic auth
-
-5. cd ..: This command changes the current directory back to the previous directory.
-
+Example for `docker-compose.yml`
+```
+version: '3'
+services:
+  cadvisor:
+    image: vuongtlt13/cadvisor
+    ports:
+      - 8080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk:/dev/disk/:ro
+    environment:
+      - BASIC_AUTH_USERNAME=admin
+      - BASIC_AUTH_PASSWORD=admin
+```
