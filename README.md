@@ -4,11 +4,34 @@
 
 
 #### List of exporters
-- Node Exporter
+- [Node Exporter](https://hub.docker.com/r/vuongtlt13/node-exporter)
 - [cAdvisor](https://hub.docker.com/r/vuongtlt13/cadvisor)
 
 
 ### 1. Node Exporter
+
+Example for `docker-compose.yml`
+```
+version: '3'
+services:
+  node_exporter:
+    image: vuongtlt13/node_exporter
+    container_name: node_exporter
+    command:
+      - "--path.rootfs=/host"
+    ports:
+      - 9100:9100
+    pid: host
+    restart: unless-stopped
+    volumes:
+      - '/:/host:ro,rslave'
+    environment:
+      - BASIC_AUTH_USERNAME=admin
+      - BASIC_AUTH_PASSWORD=admin
+```
+
+FOR MORE OPTIONS SEE: https://github.com/prometheus/node_exporter
+
 
 ### 2. cAdvisor
 
@@ -32,3 +55,5 @@ services:
       - BASIC_AUTH_USERNAME=admin
       - BASIC_AUTH_PASSWORD=admin
 ```
+
+FOR MORE OPTIONS SEE: https://github.com/google/cadvisor
