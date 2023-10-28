@@ -20,6 +20,8 @@ services:
     image: vuongtlt13/cadvisor
     ports:
       - 8080:8080
+    command: 
+     - "--housekeeping_interval=5s"
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
