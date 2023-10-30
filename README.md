@@ -54,6 +54,7 @@ services:
     environment:
       - BASIC_AUTH_USERNAME=admin
       - BASIC_AUTH_PASSWORD=admin
+    privileged: true
 ```
 
 FOR MORE OPTIONS SEE: https://github.com/google/cadvisor
