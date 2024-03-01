@@ -17,6 +17,8 @@ services:
   node_exporter:
     image: vuongtlt13/node_exporter
     container_name: node_exporter
+    build:
+      context: ./node_exporter
     command:
       - "--path.rootfs=/host"
     ports:
@@ -41,6 +43,9 @@ version: '3'
 services:
   cadvisor:
     image: vuongtlt13/cadvisor
+    container_name: cadvisor
+    build:
+      context: ./cadvisor
     ports:
       - 8080:8080
     command: 
